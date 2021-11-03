@@ -1,1 +1,38 @@
-<p>manage-user works!</p>
+<div class="clr-row">
+  <div class="clr-col-lg-8 clr-col-12">
+    <div class="card">
+      <div class="card-block">
+        <h2 cds-text="heading" class="page-header">{{ (editUser ? 'Edit User' : 'Add User') }}</h2>
+        <div class="card-text">
+          <clr-alert clrAlertType="success" [(clrAlertClosed)]="alertSuccessClosed">{{ successMessage }}</clr-alert>
+          <clr-alert clrAlertType="warning" [(clrAlertClosed)]="alertErrorClosed">{{ errorMessage }}</clr-alert>
+
+          <form class="clr-form clr-form-horizontal" [formGroup]="userForm">
+            <clr-input-container>
+              <label for="username" class="clr-control-label">User Name</label>
+              <input clrInput type="text" required formControlName="userName" placeholder="Enter user name"
+                class="formInput" />
+              <clr-control-error>User Name is required.</clr-control-error>
+            </clr-input-container>
+            <clr-input-container>
+              <label for="role" class="clr-control-label">Role</label>
+              <input clrInput type="text" required formControlName="role" placeholder="Enter role" class="formInput" />
+              <clr-control-error>Role is required.</clr-control-error>
+            </clr-input-container>
+            <clr-toggle-container>
+              <label>Active</label>
+              <clr-toggle-wrapper>
+                <input title="Active" type="checkbox" clrToggle formControlName="isActive" value="isActive" />
+              </clr-toggle-wrapper>
+            </clr-toggle-container>
+          </form>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid" (click)="submitUser()">Save</button>
+        <button type="button" class="btn" (click)="onCancel()">Cancel</button>
+        <button type="button" class="btn btn-link" routerLink="/users">Back</button>
+      </div>
+    </div>
+  </div>
+</div>

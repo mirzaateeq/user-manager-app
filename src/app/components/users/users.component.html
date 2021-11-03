@@ -1,15 +1,36 @@
-<table>
+<div class="inline-display">
+<h2 cds-text="heading" class="page-header header-display">Users</h2>
+<div class="inline-display" [formGroup]="searchForm">
+    <input clrInput type="text" (keyup)="search()" placeholder="Search User Name or Role" formControlName="keyword" class="search-input" />
+    <button class="btn btn-sm btn-link" (click)="searchReset()">Reset</button>
+</div>
+</div>
+<clr-alert clrAlertType="success" [(clrAlertClosed)]="alertClosed">User Deleted</clr-alert>
+
+<span class="label label-info">{{usersList.length}} Users</span>
+<table class="table">
     <thead>
-        <th>UserName</th>
+        <tr>
+        <th>User Name</th>
         <th>Role</th>
+        <th>Active</th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
         <tr *ngFor="let user of usersList">
-            <td>
+            <td class="td-display">
                 {{user.userName}}
             </td>
-            <td>
+            <td class="td-display">
                 {{user.role}}
+            </td>
+            <td class="td-display">
+                {{ user.isActive ? 'Yes' : 'No'}}
+            </td>
+            <td class="td-display">
+                <button (click)="onEdit(user.userId)" class="btn btn-outline btn-sm">Edit</button>
+                <button (click)="onDelete(user.userId)" class="btn btn-warning-outline btn-sm">Delete</button>
             </td>
         </tr>
     </tbody>
