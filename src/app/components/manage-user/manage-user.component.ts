@@ -82,7 +82,7 @@ export class ManageUserComponent implements OnInit {
         .catch(()=> {this.showError('Error updating user. Please try again.')});
       } else {
         if (this.userNameUnique()) {
-          console.log(this.userForm.value);
+          //console.log(this.userForm.value);
           this.userService.addUser(this.userForm.value)
           .then(()=> {this.showSuccess('User created successfully.');})
           .catch(()=> {this.showError('Error creating user. Please try again.')});
