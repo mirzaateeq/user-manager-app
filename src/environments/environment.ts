@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
 
+  locationApi: {
+    url: 'https://locationhistoryapi.azurewebsites.net/'
+  },
+
   firebase: {
     apiKey: "AIzaSyA5DXW_lFtuIRVuZMjAa3x7agUIPnABoFU",
     authDomain: "user-manager-firebase.firebaseapp.com",

@@ -1,0 +1,42 @@
+<div class="inline-display">
+    <h2 cds-text="heading" class="page-header header-display">Location History</h2>
+    <div class="inline-display" [formGroup]="searchForm">
+        <input clrInput type="text" placeholder="Search User Name" formControlName="keyword" class="search-input" />
+        <button class="btn btn-sm btn-link" (click)="search()">Search</button>
+        <button class="btn btn-sm btn-link" (click)="searchReset()">Reset</button>
+    </div>
+</div>
+<div>
+<span class="label label-info">{{locationHistory.length}} Locations for user {{getKeyword()}}</span>
+<button class="btn btn-sm btn-link" (click)="backToLocation()"> Back To List</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Coordinates</th>
+        <th>Timestamp</th>
+        <th>CurrentLocation</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locationHistory" class="tr-pointer">
+            <td class="td-display">
+                {{ location.latitude }}
+            </td>
+            <td class="td-display">
+                {{ location.longitude }}
+            </td>
+            <td class="td-display">
+                {{ location.coordinates }}
+            </td>
+            <td class="td-display">
+                {{ location.timeStamp }}
+            </td>
+            <td class="td-display">
+                {{ location.isCurrent ? 'Yes' : 'No'}}
+            </td>
+        </tr>
+    </tbody>
+</table>

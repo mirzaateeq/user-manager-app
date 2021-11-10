@@ -13,6 +13,9 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UserLocationComponent } from './components/user-location/user-location.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LocationHistoryComponent } from './components/location-history/location-history.component';
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppComponent,
     ManageUserComponent,
     UsersComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserLocationComponent,
+    LocationHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AngularFirestoreModule,
     ClarityModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
