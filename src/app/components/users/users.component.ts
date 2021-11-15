@@ -1,4 +1,3 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,9 +10,10 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
+  pageTitle: string = 'Users';
   usersList: User[] = [];
   searchForm: FormGroup;
-
+  loadingUsers: boolean = false;
   alertClosed = true;
   constructor(private userService: UserService, private formBuilder: FormBuilder, 
     private router: Router) { }
@@ -23,11 +23,17 @@ export class UsersComponent implements OnInit {
       keyword: ['']
     });
     this.getUsers();
+
+    this.searchForm.valueChanges.subscribe((newValue)=> {
+      this.search(newValue.keyword);
+    });
   }
 
   getUsers(){
+    this.loadingUsers = true;
     this.userService.getUsers().subscribe((response)=>{
       this.usersList = response;
+      this.loadingUsers = false;
     });
   }
 
@@ -40,11 +46,9 @@ export class UsersComponent implements OnInit {
     .catch(()=> { console.log('error deleting'); } );
   }
 
-  search() {
+  search(keyword: string) {
     this.userService.getUsers().subscribe((response)=>{
       this.usersList = response.filter(user => {
-        let keyword = this.searchForm.get('keyword')?.value.toLowerCase();
-        
         return (user.userName.toLowerCase().match(keyword) || 
         user.role.toLowerCase().match(keyword));
       });
@@ -53,7 +57,6 @@ export class UsersComponent implements OnInit {
 
   searchReset() {
     this.searchForm.patchValue({keyword: ''});
-    this.search();
   }
 
 }

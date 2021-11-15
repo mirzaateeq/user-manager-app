@@ -16,6 +16,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UserLocationComponent } from './components/user-location/user-location.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LocationHistoryComponent } from './components/location-history/location-history.component';
+import { AboutMeComponent } from './components/about-me/about-me.component';
+import { AboutAppComponent } from './components/about-app/about-app.component';
+import { PlayGroundComponent } from './utility/play-ground/play-ground.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { LocationHistoryComponent } from './components/location-history/location
     UsersComponent,
     DashboardComponent,
     UserLocationComponent,
-    LocationHistoryComponent
+    LocationHistoryComponent,
+    AboutMeComponent,
+    AboutAppComponent,
+    PlayGroundComponent
   ],
   imports: [
     BrowserModule,

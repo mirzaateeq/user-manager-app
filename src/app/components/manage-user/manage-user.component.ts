@@ -38,8 +38,8 @@ export class ManageUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      userName: ['', Validators.compose([Validators.required])],
-      role: [''],
+      userName: ['', Validators.compose([Validators.required, this.validateEmptyField])],
+      role: ['', [this.validateEmptyField]],
       isActive: [true]
     });
 
@@ -50,6 +50,14 @@ export class ManageUserComponent implements OnInit {
         this.editUser = param.userName;
         this.getUser(this.editUser);
       });
+  }
+
+  //Custom validator to check for empty/whitespaces only field
+  validateEmptyField(control: FormControl){
+    if(control.value.trim().length ===0 ) {
+      return { emptyField: true }
+    }
+    return null;
   }
 
   getUsers() {

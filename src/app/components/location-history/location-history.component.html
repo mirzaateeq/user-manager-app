@@ -2,7 +2,7 @@
     <h2 cds-text="heading" class="page-header header-display">Location History</h2>
     <div class="inline-display" [formGroup]="searchForm">
         <input clrInput type="text" placeholder="Search User Name" formControlName="keyword" class="search-input" />
-        <button class="btn btn-sm btn-link" (click)="search()">Search</button>
+        <button class="btn btn-sm btn-link" (click)="getLocationHistory()">Search</button>
         <button class="btn btn-sm btn-link" (click)="searchReset()">Reset</button>
     </div>
 </div>
@@ -10,6 +10,11 @@
 <span class="label label-info">{{locationHistory.length}} Locations for user {{getKeyword()}}</span>
 <button class="btn btn-sm btn-link" (click)="backToLocation()"> Back To List</button>
 </div>
+
+<div>
+    <clr-spinner [clrMedium]="true" *ngIf="loadingLocations">Loading Locations</clr-spinner>
+</div>
+
 <table class="table">
     <thead>
         <tr>

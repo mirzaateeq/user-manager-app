@@ -1,0 +1,6 @@
+<div *ngIf="isActive; else inactive">
+    Currently Active
+  </div>
+  <ng-template #inactive>
+    <div> User is not active</div>
+  </ng-template>

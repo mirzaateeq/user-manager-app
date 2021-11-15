@@ -10,13 +10,16 @@ import { LocationService } from 'src/app/services/location.service';
 })
 export class UserLocationComponent implements OnInit {
 
+  loadingLocations: boolean = false;
   userLocations: userLocation[]=[];
   constructor(private locationService: LocationService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loadingLocations = true;
     this.locationService.getLocations().subscribe((response)=>{
       if(response && response.values){
         this.userLocations = response.values;
+        this.loadingLocations = false;
       }
     });
   }
