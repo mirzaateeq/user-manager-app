@@ -1,13 +1,15 @@
 <div class="inline-display">
-<h2 cds-text="heading" class="page-header header-display">Users</h2>
+<h2 cds-text="heading" title="{{pageTitle}}" class="page-header header-display">{{pageTitle}}</h2>
 <div class="inline-display" [formGroup]="searchForm">
-    <input clrInput type="text" (keyup)="search()" placeholder="Search User Name or Role" formControlName="keyword" class="search-input" />
+    <input clrInput type="text" placeholder="Search User Name or Role" formControlName="keyword" class="search-input" />
     <button class="btn btn-sm btn-link" (click)="searchReset()">Reset</button>
 </div>
 </div>
 <clr-alert clrAlertType="success" [(clrAlertClosed)]="alertClosed">User Deleted</clr-alert>
 
 <span class="label label-info">{{usersList.length}} Users</span>
+
+<div><clr-spinner [clrMedium]="true" *ngIf="loadingUsers">Loading users</clr-spinner><div>
 <table class="table">
     <thead>
         <tr>

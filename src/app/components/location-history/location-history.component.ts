@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError, map } from 'rxjs/operators';
 import { location } from 'src/app/core/location';
 import { LocationService } from 'src/app/services/location.service';
 
@@ -11,6 +12,7 @@ import { LocationService } from 'src/app/services/location.service';
 })
 export class LocationHistoryComponent implements OnInit {
 
+  loadingLocations: boolean = false;
   locationHistory: location[] = [];
   searchForm: FormGroup;
   constructor(private locationService: LocationService, private formBuilder: FormBuilder,
@@ -36,17 +38,22 @@ export class LocationHistoryComponent implements OnInit {
     this.searchForm.patchValue({keyword: ''});
   }
 
-  search() {
-    this.getLocationHistory();
-  }
-
   getLocationHistory() {
     const searchkey = this.getKeyword();
     if (searchkey) {
-      this.locationService.getLocationHistory(searchkey).subscribe((response) => {
+      this.locationHistory = [];
+      this.loadingLocations = true;
+      this.locationService.getLocationHistory(searchkey).toPromise()
+      .then((response)=> {
         this.locationHistory = response.locations;
       })
+      .catch((error)=> {this.showErrorMessage(error)})
+      .finally(()=> this.loadingLocations = false)
+      }
     }
+  
+  showErrorMessage(error: any){
+    console.log(error);
   }
 
   backToLocation(){

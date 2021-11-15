@@ -1,7 +1,12 @@
 <h2 cds-text="heading" class="page-header header-display">User Location</h2>
 
 <span class="label label-info">{{userLocations.length}} User Locations</span>
-<table class="table">
+
+<div>
+    <clr-spinner [clrMedium]="true" *ngIf="loadingLocations">Loading Locations</clr-spinner>
+</div>
+
+<table *ngIf="userLocations.length>0" class="table">
     <thead>
         <tr>
         <th>User Name</th>
