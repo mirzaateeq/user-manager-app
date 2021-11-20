@@ -25,7 +25,7 @@ export class UserLocationComponent implements OnInit {
   }
 
   showLocationHistory(userId: string){
-    this.router.navigate([`/location-history/${userId}`]);
+    this.router.navigate([`/location/location-history/${userId}`]);
   }
 
 }

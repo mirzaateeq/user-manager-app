@@ -3,11 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutAppComponent } from './components/about-app/about-app.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LocationHistoryComponent } from './components/location-history/location-history.component';
 import { ManageUserComponent } from './components/manage-user/manage-user.component';
-import { UserLocationComponent } from './components/user-location/user-location.component';
 import { UsersComponent } from './components/users/users.component';
-import { UserService } from './services/user.service';
 import { PlayGroundComponent } from './utility/play-ground/play-ground.component';
 
 const routes: Routes = [
@@ -16,10 +13,6 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent },
   { path: 'add-user', component: ManageUserComponent },
   { path: 'edit-user/:userName', component: ManageUserComponent },
-  { path: 'user-location', component: UserLocationComponent },
-  { path: 'location-history', component: LocationHistoryComponent },
-  { path: 'location-history/:userId', component: LocationHistoryComponent },
-
   { path: 'about-me', component: AboutMeComponent },
   { path: 'about-app', component: AboutAppComponent },
   { path: 'play', component: PlayGroundComponent, 
@@ -29,6 +22,7 @@ const routes: Routes = [
     //   user: UserService
     // } 
   },
+  { path: 'location', loadChildren: () => import('./location/location.module').then(m => m.LocationModule) },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
