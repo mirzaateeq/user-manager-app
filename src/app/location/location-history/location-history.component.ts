@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, map } from 'rxjs/operators';
 import { location } from 'src/app/core/location';
 import { LocationService } from 'src/app/services/location.service';
 
@@ -57,7 +56,7 @@ export class LocationHistoryComponent implements OnInit {
   }
 
   backToLocation(){
-    this.router.navigate(['/user-location']);
+    this.router.navigate(['/location/user-location']);
   }
 
 }

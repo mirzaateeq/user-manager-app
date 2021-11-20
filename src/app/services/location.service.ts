@@ -2,14 +2,11 @@ import { Injectable} from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { locationResponse } from '../core/location.response';
-import { userLocation } from '../core/user.location';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { locationHistory } from '../core/location.history';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LocationService {
 
   apiUrl: string;

@@ -13,13 +13,10 @@ import { ClarityModule } from '@clr/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { UserLocationComponent } from './components/user-location/user-location.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LocationHistoryComponent } from './components/location-history/location-history.component';
 import { AboutMeComponent } from './components/about-me/about-me.component';
 import { AboutAppComponent } from './components/about-app/about-app.component';
 import { PlayGroundComponent } from './utility/play-ground/play-ground.component';
-
 
 @NgModule({
   declarations: [
@@ -27,8 +24,6 @@ import { PlayGroundComponent } from './utility/play-ground/play-ground.component
     ManageUserComponent,
     UsersComponent,
     DashboardComponent,
-    UserLocationComponent,
-    LocationHistoryComponent,
     AboutMeComponent,
     AboutAppComponent,
     PlayGroundComponent
@@ -42,7 +37,7 @@ import { PlayGroundComponent } from './utility/play-ground/play-ground.component
     ClarityModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
