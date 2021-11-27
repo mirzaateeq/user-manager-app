@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   locationApi: {
-    url: 'https://locationhistoryapi.azurewebsites.net/'
+    url: 'https://locationhistoryapi.azurewebsites.net/' //'https://localhost:44371'
   },
 
   firebase: {
