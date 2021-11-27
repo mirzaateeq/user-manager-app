@@ -11,8 +11,7 @@ export class LocationService {
 
   apiUrl: string;
   constructor(private httpClient: HttpClient) {
-    //this.apiUrl = environment.locationApi.url;  //ToDo: Throwing error during production build. Below is workaround
-    this.apiUrl = 'https://locationhistoryapi.azurewebsites.net'; 
+    this.apiUrl = environment.locationApi.url; 
   }
 
   public getLocations(): Observable<locationResponse> {
