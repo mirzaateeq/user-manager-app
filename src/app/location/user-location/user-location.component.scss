@@ -1,0 +1,11 @@
+.flex-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.flex-header{
+    flex-basis: 75%;
+}
+.flex-action-items{
+    flex-basis: 25%;
+}
