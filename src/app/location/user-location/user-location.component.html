@@ -1,38 +1,40 @@
-<h2 cds-text="heading" class="page-header header-display">User Location</h2>
-
-<span class="label label-info">{{userLocations.length}} User Locations</span>
-
-<div>
-    <clr-spinner [clrMedium]="true" *ngIf="loadingLocations">Loading Locations</clr-spinner>
+<div class="flex-container">
+  <div class="flex-header">
+      <h2 cds-text="heading" class="page-header header-display">User Location</h2>
+  </div>
+  <div class="flex-action-items">
+    <span class="label label-info">{{userLocations.length}} User Locations</span>
+    <button (click)="downloadPdf()" class="btn btn-primary btn-sm">Download</button>
+  </div>
 </div>
-
-<table *ngIf="userLocations.length>0" class="table">
-    <thead>
-        <tr>
-        <th>User Name</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Coordinates</th>
-        <th>CurrentLocation</th>
+<clr-spinner [clrMedium]="true" *ngIf="loadingLocations">Loading Locations</clr-spinner>
+<table *ngIf="userLocations.length>0" id="user-locations" class="table">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Coordinates</th>
+      <th>CurrentLocation</th>
     </tr>
-    </thead>
-    <tbody>
-        <tr class="tr-pointer" *ngFor="let userLoc of userLocations" (click)="showLocationHistory(userLoc.userId)">
-            <td class="td-display">
-                {{userLoc.userId}}
-            </td>
-            <td class="td-display">
-                {{userLoc.currentLocation.latitude}}
-            </td>
-            <td class="td-display">
-                {{ userLoc.currentLocation.longitude}}
-            </td>
-            <td class="td-display">
-                {{ userLoc.currentLocation.coordinates}}
-            </td>
-            <td class="td-display">
-                {{ userLoc.currentLocation.isCurrent ? 'Yes' : 'No'}}
-            </td>
-        </tr>
-    </tbody>
+  </thead>
+  <tbody>
+    <tr class="tr-pointer" *ngFor="let userLoc of userLocations" (click)="showLocationHistory(userLoc.userId)">
+      <td class="td-display">
+        {{userLoc.userId}}
+      </td>
+      <td class="td-display">
+        {{userLoc.currentLocation.latitude}}
+      </td>
+      <td class="td-display">
+        {{ userLoc.currentLocation.longitude}}
+      </td>
+      <td class="td-display">
+        {{ userLoc.currentLocation.coordinates}}
+      </td>
+      <td class="td-display">
+        {{ userLoc.currentLocation.isCurrent ? 'Yes' : 'No'}}
+      </td>
+    </tr>
+  </tbody>
 </table>

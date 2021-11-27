@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { userLocation } from 'src/app/core/user.location';
 import { LocationService } from 'src/app/services/location.service';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-user-location',
@@ -26,6 +28,12 @@ export class UserLocationComponent implements OnInit {
 
   showLocationHistory(userId: string){
     this.router.navigate([`/location/location-history/${userId}`]);
+  }
+
+  downloadPdf(){
+    const doc = new jsPDF();
+    autoTable(doc, {html: '#user-locations'});
+    doc.save('user-locations.pdf');
   }
 
 }
